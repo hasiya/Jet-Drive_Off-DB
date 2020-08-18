@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'xpk*zl49fx7ogrl$#4325ale(h%xjc
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['floating-plains-07738.herokuapp.com']
+ALLOWED_HOSTS = ['jet-drive-off-db.herokuapp.com']
 
 
 # Application definition
