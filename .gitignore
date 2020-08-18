@@ -5,4 +5,4 @@
 *.sqlite3
 
 #vs Code
-.vscode
+.vscode/
