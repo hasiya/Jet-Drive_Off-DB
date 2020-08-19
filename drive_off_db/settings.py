@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'xpk*zl49fx7ogrl$#4325ale(h%xjc
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['jet-drive-off-db.herokuapp.com']
+ALLOWED_HOSTS = ['jet-drive-off-db.herokuapp.com','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'drive_off_db.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
