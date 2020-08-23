@@ -41,14 +41,19 @@ class DriveOff(models.Model):
             raise ValidationError({'date_time': ValidationError('The "Date and Time" cannot be a future Date and Time')})
 
         if self.paid and not self.paid_date:
-            raise ValidationError({'paid_date': ValidationError('If paid enter "Paid Date"')})        
+            raise ValidationError({'paid_date': ValidationError('If paid enter "Paid Date"')}) 
 
-        if self.paid_date < self.date_time.date():
+        if not self.paid and self.paid_date:
+            raise ValidationError({'paid_date': ValidationError('Was this Drive off paid? If so tick "Paid". If not Clear "Paid Date"')})       
+
+        if self.paid_date and self.paid_date < self.date_time.date():
             raise ValidationError({'paid_date': ValidationError('The "Paid Date" is before Drive Off Date')})
 
-        if self.paid_date > now.date():
+        if self.paid_date and self.paid_date > now.date():
             raise ValidationError({'paid_date': ValidationError('The "Paid Date" cannot be a future Date')})
 
+        if not self.paid and self.paid_date:
+            raise ValidationError({'paid_date': ValidationError('Was this Drive off paid? If so tick "Paid". If not Clear "Paid Date"')})
         
     class Meta:
         ordering = ['-date_time']
